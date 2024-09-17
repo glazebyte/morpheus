@@ -1,0 +1,29 @@
+[
+    {
+        "username": "dr.johndoe",
+        "fullname": "Dr. John Doe",
+        "email": "john.doe@example.com",
+        "password": "hashed_password_1",
+        "role": "doctor",
+        "specialization": "Cardiology",
+        "birth_date": "1980-05-20T00:00:00.000Z"
+    },
+    {
+        "username": "dr.janesmith",
+        "fullname": "Dr. Jane Smith",
+        "email": "jane.smith@example.com",
+        "password": "hashed_password_2",
+        "role": "doctor",
+        "specialization": "Neurology",
+        "birth_date": "1985-09-10T00:00:00.000Z"
+    },
+    {
+        "username": "dr.petersimons",
+        "fullname": "Dr. Peter Simons",
+        "email": "peter.simons@example.com",
+        "password": "hashed_password_3",
+        "role": "doctor",
+        "specialization": "Dermatology",
+        "birth_date": "1977-02-15T00:00:00.000Z"
+    }
+]

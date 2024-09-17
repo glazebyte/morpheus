@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id             Int              @id @default(autoincrement())
+  username       String
+  fullname       String
+  email          String           @unique
+  password       String
+  role           String
+  specialization String?
+  birth_date     DateTime
+  created_at     DateTime         @default(now())
+  PatientDisease PatientDisease[] @relation("DoctorPatientRelation")
+}
+
+model Patient {
+  id             Int              @id @default(autoincrement())
+  fullname       String
+  phone_number   String
+  height         Int
+  weight         Int
+  blood          BloodType
+  PatientDisease PatientDisease[]
+}
+
+model PatientDisease {
+  id          Int        @id @default(autoincrement())
+  doctor_id   Int
+  patient_id  Int
+  disease     String
+  doctor_note String?
+  doctor      Users      @relation("DoctorPatientRelation", fields: [doctor_id], references: [id])
+  patient     Patient    @relation(fields: [patient_id], references: [id])
+  Detection   Detection?
+}
+
+model Detection {
+  id             Int              @id @default(autoincrement())
+  disease_id     Int              @unique
+  disease        PatientDisease   @relation(fields: [disease_id], references: [id])
+  ImageDetection ImageDetection[]
+}
+
+model ImageDetection {
+  id           Int             @id @default(autoincrement())
+  detection_id Int
+  image_uuid   String
+  image_name   String
+  result       DetectionResult
+  confidence   Float
+  detection    Detection       @relation(fields: [detection_id], references: [id])
+}
+
+enum BloodType {
+  A
+  B
+  AB
+  O
+}
+
+enum DetectionResult {
+  Positive
+  Negative
+  Inconclusive
+}

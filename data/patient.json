@@ -1,0 +1,24 @@
+[
+    {
+      "fullname": "Alice Johnson",
+      "phone_number": "081234567890",
+      "height": 165,
+      "weight": 60,
+      "blood": "A"
+    },
+    {
+      "fullname": "Bob Smith",
+      "phone_number": "081298765432",
+      "height": 175,
+      "weight": 75,
+      "blood": "O"
+    },
+    {
+      "fullname": "Charlie Brown",
+      "phone_number": "081212345678",
+      "height": 160,
+      "weight": 55,
+      "blood": "B"
+    }
+  ]
+  
